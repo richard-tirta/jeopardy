@@ -1,16 +1,16 @@
 
 
-export default function view(quizes, categoriesLength) {
+export default function view(quizes) {
 
 	const quizGalleryEl = document.getElementById('quiz_container'),
 		inputEl = document.getElementById('answer'),
 		quiz = quizes;
- 
+
 	let currentQuestion,
 		isQuestionOpen = false;
 
 	const listenAnswer = function(data) {
-		
+
 		let response;
 
 		const findQuestion = function (answerId) {
@@ -18,7 +18,7 @@ export default function view(quizes, categoriesLength) {
 			let answer;
 
 			for (let i = 0; i < data.length; i ++) {
-				
+
 				for (let a = 0; a < data[i].length; a ++) {
 
 					if (data[i][a].id === answerId) {
@@ -74,8 +74,8 @@ export default function view(quizes, categoriesLength) {
 		const categoryName = quiz[c][0].category.title,
 			catQuiz = quiz[c],
 			newCatUl = document.createElement('ul');
-		
-		for(let q = 0; q < categoriesLength; q++) {
+
+		for(let q = 0; q < 5; q++) {
 
 			const newListEl = document.createElement('li');
 
@@ -89,7 +89,7 @@ export default function view(quizes, categoriesLength) {
 
 			newCatUl.appendChild(newListEl);
 
-			if(q === categoriesLength - 1) {
+			if(q === 5 - 1) {
 				const newCatEl = document.createElement('div');
 
 				newCatEl.classList.add('quiz-cat');
@@ -99,7 +99,7 @@ export default function view(quizes, categoriesLength) {
 				quizGalleryEl.appendChild(newCatEl);
 
 			}
-		}		
+		}
 	}
 
 	listenClick(quizes);
@@ -107,7 +107,3 @@ export default function view(quizes, categoriesLength) {
 
 	return 'view checked';
 }
-
-
-
-

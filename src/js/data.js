@@ -4,13 +4,13 @@ import view from './view.js';
 
 export default function data() {
 	const catMax = 90,
-		categoriesLength = 5,
+		categoriesLength = 3,
 		categoriesUrl = 'http://jservice.io/api/categories?count=' + catMax;
 
 	let quizes = [];
 
 	const getRandomInt = function (max) {
-		const min = 1, 
+		const min = 1,
 			randomInt = Math.floor(Math.random() * (max - min + 1) + min);
 
 		return randomInt;
@@ -50,7 +50,7 @@ export default function data() {
 					})
 					.then(function() {
 						if (quizes.length === categoriesLength) {
-							view(quizes, categoriesLength);
+							view(quizes);
 						}
 					})
 					.catch(function(err) {
@@ -65,11 +65,3 @@ export default function data() {
 
 	return;
 }
-
-
-
-
-
-
-
-
